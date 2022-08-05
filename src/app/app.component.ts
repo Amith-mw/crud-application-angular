@@ -5,6 +5,7 @@ import { ApiService } from './services/api.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -29,7 +30,11 @@ export class AppComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private dialog: MatDialog, private api: ApiService) {}
+  constructor(
+    private dialog: MatDialog,
+    private api: ApiService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.getAllProducts();
@@ -46,7 +51,7 @@ export class AppComponent implements OnInit {
   }
 
   getAllProducts() {
-    this.api.getProduct().subscribe({
+    this.api.getProducts().subscribe({
       next: (res) => {
         // console.log(res);
         this.dataSource = new MatTableDataSource(res);
@@ -55,6 +60,14 @@ export class AppComponent implements OnInit {
       },
       error: (err) => {
         alert(`Error while fetching the records! : ${err}`);
+      },
+    });
+  }
+
+  viewProduct(id: number) {
+    this.api.getProduct(id).subscribe({
+      next: (res) => {
+        console.log(res);
       },
     });
   }

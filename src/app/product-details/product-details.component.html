@@ -1,0 +1,11 @@
+<div class="container">
+  <div *ngIf="product$ | async as product">
+    <h1>Product Details</h1>
+    <p><b>Product Name:</b> {{ product.productName }}</p>
+    <p><b>Product Category:</b> {{ product.category }}</p>
+    <p><b>Product Price:</b> {{ product.price }}</p>
+    <p><b>Product condition:</b> {{ product.condition }}</p>
+    <p><b>Product comment:</b> {{ product.comment }}</p>
+    <p><b>Product date:</b> {{ product.date | date }}</p>
+  </div>
+</div>

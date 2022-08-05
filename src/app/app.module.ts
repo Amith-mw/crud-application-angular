@@ -22,9 +22,11 @@ import { MatSortModule } from '@angular/material/sort';
 import { DialogComponent } from './dialog/dialog.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ProductDetailsComponent } from './product-details/product-details.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
-  declarations: [AppComponent, DialogComponent],
+  declarations: [AppComponent, DialogComponent, ProductDetailsComponent, PageNotFoundComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
